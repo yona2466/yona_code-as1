@@ -24,13 +24,19 @@ After elimination: E → T E', E' → + T E' | ε
 
 ## Question 2: C++ Tokenizer Program
 
+
 File: src/tokenizer.cpp
+
 #include <iostream>
+
 #include <string>
+
 #include <vector>
+
 #include <cctype>
 
 enum TokenType { INTEGER, PLUS, MULTIPLY, END, INVALID };
+
 
 struct Token {
 TokenType type;
@@ -41,18 +47,25 @@ class Tokenizer {
 private:
 std::string input;
 size_t pos = 0;
-char current() { return pos < input.size() ? input[pos] : '\0'; }
+char current()
+{ return pos < input.size() ? input[pos] : '\0'; }
+
 void advance() { if (pos < input.size()) pos++; }
 public:
-Tokenizer(const std::string& s) : input(s) {}
-std::vector<Token> tokenize() {
+
+Tokenizer(const std::string& s) : input(s) 
+{}
+std::vector<Token> tokenize()
+{
     std::vector<Token> tokens;
  
     
     while (current() != '\0') {
+    
         if (isspace(current())) { advance(); continue; }
         
-        if (isdigit(current())) {
+        if (isdigit(current()))
+        {
             std::string num;
             while (isdigit(current())) {
                 num += current();
@@ -84,7 +97,8 @@ Tokenizer t("123 + 45 * 6");
 auto tokens = t.tokenize();
 for (const auto& tok : tokens) {
     std::cout << "Token: ";
-    switch(tok.type) {
+    switch(tok.type)
+    {
         case INTEGER: std::cout << "INTEGER"; break;
         case PLUS: std::cout << "PLUS"; break;
         case MULTIPLY: std::cout << "MULTIPLY"; break;
