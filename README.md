@@ -92,20 +92,31 @@ std::vector<Token> tokenize()
 }
 };
 
-int main() {
+int main() 
+{
 Tokenizer t("123 + 45 * 6");
+
 auto tokens = t.tokenize();
-for (const auto& tok : tokens) {
+
+for (const auto& tok : tokens)
+{
     std::cout << "Token: ";
+    
     switch(tok.type)
+    
     {
         case INTEGER: std::cout << "INTEGER"; break;
+        
         case PLUS: std::cout << "PLUS"; break;
+        
         case MULTIPLY: std::cout << "MULTIPLY"; break;
+        
         case END: std::cout << "END"; break;
+        
         default: std::cout << "INVALID";
     }
     if (!tok.value.empty() && tok.type != END)
+    
         std::cout << " (" << tok.value << ")";
     std::cout << "\n";
 }
